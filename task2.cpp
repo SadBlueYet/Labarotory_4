@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 
 int num(int a)
@@ -29,8 +29,11 @@ int main()
 
 	int number;
 	int numberInTheFile;
+	int counter = 0;
+	int counter1 = 0;
+	int counter2 = 0;
 
-	do 
+	do
 	{
 		std::cout << "Введите положительное число:";
 		std::cin >> number;
@@ -52,7 +55,7 @@ int main()
 
 		}
 
-	}while (number != 0);
+	} while (number != 0);
 
 	fin.open("number.txt", std::ios_base::in);
 
@@ -65,18 +68,18 @@ int main()
 	{
 		while (fin >> numberInTheFile)
 		{
-
+			
 			if (num(numberInTheFile) == 1)
 			{
-				result << "Число " << numberInTheFile << " Однозначаное" << '\n';
+				counter++;
 			}
 			else if (num(numberInTheFile) == 2)
 			{
-				result << "Число " << numberInTheFile << " Двухзначное" << '\n';
+				counter1++;
 			}
-			else if (num(numberInTheFile))
+			else if (num(numberInTheFile) == 3)
 			{
-				result << "Число " << numberInTheFile << " Трехзначное" << '\n';
+				counter2++;
 			}
 			else if (numberInTheFile > 999)
 			{
@@ -86,11 +89,18 @@ int main()
 			{
 				std::cout << "Число " << numberInTheFile << " отрицательное" << '\n';
 			}
+			
 
 
 		}
 		fin.close();
+		if (number == 0)
+		{
+			result << "Количество однозначных чисел: " << counter << '\n' <<
+				"Количество двухзначных чисел: " << counter1 << '\n' << 
+				"Количество трехзначных чисел: " << counter2  << '\n';	
+		}
+
 	}
 	return 0;
-} 
-
+}
